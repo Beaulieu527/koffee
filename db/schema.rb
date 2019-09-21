@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_020130) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
+  end 
 
   create_table "order_statuses", force: :cascade do |t|
     t.string "name"
