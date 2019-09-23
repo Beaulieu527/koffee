@@ -1,4 +1,6 @@
 class OrderController < ApplicationController
+
+
     def index
         @orders = Orders.all
         respond_to do |f|
@@ -46,7 +48,8 @@ class OrderController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:amount, :product_id, )
+        params[:order][:products] ||= []
+        params.require(:order).permit(:amount, products: [])
     end
  
 end
