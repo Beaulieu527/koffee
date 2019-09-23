@@ -1,7 +1,5 @@
 class Order < ApplicationRecord
-    belongs_to :customer
-
+    belongs_to :user
     has_many :order_lines
-
-    has_one  :order_status
+    has_many :products, through: :order_lines
 end
