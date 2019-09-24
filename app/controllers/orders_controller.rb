@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
 
     def index
-        @orders = Orders.all
+        @orders = current_user.orders
         respond_to do |f|
             f.json  { render :json => @orders }
         end
@@ -13,10 +13,26 @@ class OrdersController < ApplicationController
     end
     
     def create
-        @order = current_user.orders.create(order_params)
+        @order = current_user.orders.create(amount: 0)
+        # products = []
+        orderlines = []
+
+        total = 0
+        {id, name, quantity}
+        params[:products].each do |product|
+            product1 = Product.find_or_create_by(id: product[:id])
+            orderline = OrderLine.create(product_id: product1.id, order_id: order.id, quantity: product[:quantity])
+            total += product1.price
+            order_lines.push(product1)
+        end 
+
+        order.amount = total 
+        order.save
+
         respond_to do |f|
             f.json  { render :json => @order }
         end
+
     end
 
     def show
@@ -49,7 +65,7 @@ class OrdersController < ApplicationController
 
     def order_params
         params[:order][:products] ||= []
-        params.require(:order).permit(:amount, products: [])
+        params.require(:order).permit(:amount)
     end
  
 end
