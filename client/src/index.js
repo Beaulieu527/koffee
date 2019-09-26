@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
+import cartReducer from './reducers/cartReducer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import * as serviceWorker from './serviceWorker';
+import 'materialize-css/dist/css/materialize.min.css'
+import M from 'materialize-css'
 
-const store = (cartReducer)
+
+const store = createStore(cartReducer)
 
 ReactDOM.render(
     <Provider store={store}>

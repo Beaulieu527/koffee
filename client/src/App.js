@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar'
+import Nav from './components/Nav'
 import Provider from 'react-redux';
-import M from 'materialize-css'
 import { createStore } from 'redux';
-
+import M from 'materialize-css'
+import Login from './components/Login'
+import Signup from './components/Signup';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <h1>Hello</h1>
+      <Nav />
+      <br/>
+     
     </div>
   );
 }
