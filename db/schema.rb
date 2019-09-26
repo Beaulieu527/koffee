@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_205112) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "amount"
+    t.float "amount"
     t.integer "user_id"
     t.integer "order_status_id"
     t.datetime "created_at", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_205112) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.decimal "price"
+    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 0

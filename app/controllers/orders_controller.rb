@@ -25,37 +25,32 @@ class OrdersController < ApplicationController
     end
     
     def create
-        # @order = current_user.orders.create(amount: 0)
-        # # products = []
-        # orderlines = []
-
-        # total = 0
-        # {id, name, quantity}
-        # params[:products].each do |product|
-        #     product1 = Product.find_or_create_by(id: product[:id])
-        #     orderline = OrderLine.create(product_id: product1.id, order_id: order.id, quantity: product[:quantity])
-        #     total += product1.price
-        #     order_lines.push(product1)
-        # end 
-
-        # order.amount = total 
-        # order.save
-        order = current_user.orders.build
-        order.build_placements_with_product_ids_and_quantities(params[:order][:product_ids_and_quantities])
         
-        
-        # params[:product_ids].each do |product|
-        #     amount += product.price
-        # end 
-    
-        if order.save
-            order.reload
-            respond_to do |f|
-                f.json  { render :json => @order }
-            end
-        else
-          render json: { errors: order.errors }, status: 422
+        order = Order.create(user_id: 1)
+        total = 0
+     
+        [:products].each do |product|
+            product1 = Product.find_by(id: :product_id)
+            order_line = OrderLine.create(order_id: order.id, product_id: :product_id, quantity: :quantity)
+            total += product1.price * :quantity
         end
+
+        order.amount = total
+        order.save
+        render :json => order
+
+        # order = Order.create(user_id:1)
+        # order.build_lines(params[:order][:product_ids_and_quantities])
+        
+
+        # if order.save
+        #     order.reload
+        #     respond_to do |f|
+        #         f.json  { render :json => @order }
+        #     end
+        # else
+        #   render json: { errors: order.errors }, status: 422
+        # end
     
     end
 
@@ -76,12 +71,6 @@ class OrdersController < ApplicationController
     #     end
     # end
 
-    private
-
-    def order_params
-        params.require(:order).permit(:product_ids => [])
-    end
- 
 end
 
 
