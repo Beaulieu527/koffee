@@ -8,16 +8,21 @@ class Login extends Component {
             password:""
          };
     }
+    handleOnChange = event => {
+        this.setState({ [event.target.id]: event.target.value })
+    }
+
+
     render() {
         return (
-            <div class="container">
+            <div className="container">
             <h2 style={{textAlign:'center'}}>Login</h2>
             <br/>
             <br/>
             <form>
-                <TextInput email validate label="Email" />
+                <TextInput id="email" email validate label="Email" onChange={event => this.handleOnChange(event)}  />
                 <br/>
-                <TextInput password label="Password" />
+                <TextInput id="password" password label="Password" onChange={event => this.handleOnChange(event)}  />
                 <Button waves="teal" style={{marginRight: '5px'}}>
                     Login
                 </Button>
