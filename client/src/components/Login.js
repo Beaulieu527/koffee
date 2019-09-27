@@ -3,7 +3,10 @@ import {Button,TextInput } from 'react-materialize';
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { 
+            email: "", 
+            password:""
+         };
     }
     render() {
         return (
@@ -11,12 +14,14 @@ class Login extends Component {
             <h2 style={{textAlign:'center'}}>Login</h2>
             <br/>
             <br/>
-            <TextInput email validate label="Email" />
-            <br/>
-            <TextInput password label="Password" />
-            <Button waves="teal" style={{marginRight: '5px'}}>
-                Login
-            </Button>
+            <form>
+                <TextInput email validate label="Email" />
+                <br/>
+                <TextInput password label="Password" />
+                <Button waves="teal" style={{marginRight: '5px'}}>
+                    Login
+                </Button>
+            </form>
         </div>
         );
     }
