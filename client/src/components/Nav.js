@@ -6,7 +6,7 @@ class Nav extends Component {
     
     render() {
         return (
-            <Navbar  brand={<a target="_blank" href="/home">Koffee</a>} alignLinks="right">
+            <Navbar  brand={<a target="_blank" href="/">Koffee</a>} alignLinks="right">
             <NavItem href="/products">
                 Menu
             </NavItem>
