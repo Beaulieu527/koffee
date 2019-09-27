@@ -11,6 +11,7 @@ import Homepage from './components/Homepage';
 import OrdersContainer from './containers/OrdersContainer'
 import ProductsContainer from './containers/ProductsContainer'
 import Cart from './components/Cart';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -20,13 +21,14 @@ function App() {
             
               <Nav/>
                 <Switch>
-                    <Route exact path="/home" component={Homepage}/>
+                    <Route exact path="/" component={Homepage}/>
                     <Route path="/products" component={ProductsContainer}/>
                     <Route path="/cart" component={Cart}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={Signup}/>
                     <Route path="/orders" component={OrdersContainer}/>
                   </Switch>
+              <Footer/>
              </div>
        </BrowserRouter>
   );
