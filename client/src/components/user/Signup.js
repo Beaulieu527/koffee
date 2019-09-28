@@ -21,6 +21,7 @@ class Signup extends Component {
         return (
             <div class="container">
                 <h2 style={{textAlign:'center'}}>Register</h2>
+                <ul className="collection"></ul>
                 <br/>
                 <br/>
                 <form>

@@ -1,37 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Nav from './components/Nav'
-import Provider from 'react-redux';
-import { createStore } from 'redux';
-
-import Login from './components/Login'
-import Signup from './components/Signup';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Nav from './components/layout/Nav'
+import { connect } from 'react-redux'
+import Login from './components/user/Login'
+import Signup from './components/user/Signup';
 import Homepage from './components/Homepage';
 import OrdersContainer from './containers/OrdersContainer'
 import ProductsContainer from './containers/ProductsContainer'
-import Cart from './components/Cart';
-import Footer from './components/Footer';
+import Footer from './components/layout/Footer';
+import CartContainer from './containers/CartContainer';
+import { fetchProducts } from './actions/productActions';
 
-function App() {
-  return (
-  
+
+class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchProducts()
+  }
+  render() {
+    return (
+
       <BrowserRouter>
-            <div className="App">
-            
-              <Nav/>
-                <Switch>
-                    <Route exact path="/" component={Homepage}/>
-                    <Route path="/products" component={ProductsContainer}/>
-                    <Route path="/cart" component={Cart}/>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/register" component={Signup}/>
-                    <Route path="/orders" component={OrdersContainer}/>
-                  </Switch>
-              <Footer/>
-             </div>
-       </BrowserRouter>
-  );
+        <div className="App">
+
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route path="/products" component={ProductsContainer} />
+            <Route path="/cart" component={CartContainer} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Signup} />
+            <Route path="/orders" component={OrdersContainer} />
+          </Switch>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state){
+  return {products: state.products}
+}
+export default connect(mapStateToProps, { fetchProducts })(App)
+
