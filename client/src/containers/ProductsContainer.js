@@ -4,26 +4,10 @@ import { connect } from 'react-redux'
 import { addToCart } from '../actions/CartActions';
 
 class ProductsContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: [{
-                id: 1,
-                name: '1',
-                description: 'sdfhjklahfadsjklhfhsdh',
-                price: 2
-            }, {
-                id: 2,
-                name: 'name',
-                description: 'sdfhjklahfadsjklhfhsdh',
-                price: 10
-            }]
-
-        };
-    }
+    
 
     generateProducts = () => {
-        return this.state.products.map((product) => <Product product={product} />)
+        return this.props.products.map((product) => <Product product={product} />)
     }
 
     render() {
@@ -43,7 +27,7 @@ class ProductsContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products
+        products: state.products.products
     }
 }
 

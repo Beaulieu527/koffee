@@ -40,8 +40,6 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return {products: state.products}
-}
+let mapStateToProps = (state) => {return {products: state.products}}
 export default connect(mapStateToProps, { fetchProducts })(App)
 
