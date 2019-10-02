@@ -20,26 +20,37 @@ class App extends Component {
   }
   render() {
     return (
-
-      <BrowserRouter>
-        <div className="App">
-
+      [
+        <header>
           <Nav />
-          <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route path="/products" component={ProductsContainer} />
-            <Route path="/cart" component={CartContainer} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Signup} />
-            <Route path="/orders" component={OrdersContainer} />
-          </Switch>
-          <Footer />
-        </div>
-      </BrowserRouter>
+        </header>,
+
+        <main>
+          <BrowserRouter>
+            <div className="App">
+
+              <Switch>
+                <Route exact path="/" component={Homepage} />
+                <Route path="/products" component={ProductsContainer} />
+                <Route path="/cart" component={CartContainer} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Signup} />
+                <Route path="/orders" component={OrdersContainer} />
+              </Switch>
+            </div>
+          </BrowserRouter>
+        </main>,
+
+        <Footer />
+
+      ]
+
+
+
     );
   }
 }
 
-let mapStateToProps = (state) => {return {products: state.products}}
+let mapStateToProps = (state) => { return { products: state.products } }
 export default connect(mapStateToProps, { fetchProducts })(App)
 

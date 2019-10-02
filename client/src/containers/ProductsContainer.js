@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Product from '../components/Product';
 import { connect } from 'react-redux'
-import { addToCart } from '../actions/CartActions';
+import { addToCart } from '../actions/cartActions';
 
 class ProductsContainer extends Component {
-    
+
 
     generateProducts = () => {
-        return this.props.products.map((product) => <Product product={product} />)
+        return this.props.products.map((product) => <Product product={product} key={product.id} />)
     }
 
     render() {
@@ -18,7 +18,9 @@ class ProductsContainer extends Component {
                 <br />
                 <br />
                 <div className="box">
-                    {this.generateProducts()}
+                    <div class="row" >
+                        {this.generateProducts()}
+                    </div>
                 </div>
             </div>
         );
@@ -27,8 +29,9 @@ class ProductsContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.products
+        products: state.products.products,
+        addedProducts: state.products.addedProducts
     }
 }
 
-export default connect(mapStateToProps, {addToCart}) (ProductsContainer);
+export default connect(mapStateToProps, { addToCart })(ProductsContainer);

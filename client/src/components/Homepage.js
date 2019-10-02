@@ -44,7 +44,7 @@ class Homepage extends Component {
                                     <h2 style={{
                                         textAlign:'center',
                                         }}>
-                                          Fare Trade.
+                                          Fair Trade.
                                     </h2>
                                     <ul className="collection"></ul>
                                     <h5>Sunt wayfarers unicorn tofu farm-to-table officia neutra small batch everyday carry fixie, hoodie ut. Fingerstache flexitarian succulents forage irony occupy heirloom whatever ut helvetica. XOXO vape labore palo santo laborum, pug street art quinoa. Occaecat pinterest kombucha biodiesel. Reprehenderit viral mlkshk, selfies hammock XOXO dolore. Celiac kitsch roof party stumptown.</h5>

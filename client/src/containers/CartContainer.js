@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Total from '../components/cart/Total';
 import Cart from '../components/cart/Cart';
+import { removeProduct, addQuantity, subtractQuantity } from '../actions/cartActions';
+
+import { connect } from 'react-redux';
 
 class CartContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+    
+    generateCarts = () => {
+        return this.props.addedProducts.map((addedProduct) => <Cart product={addedProduct} key={addedProduct.id} />)
     }
     render() {
         return (
@@ -21,7 +24,7 @@ class CartContainer extends Component {
                     <br />
                     <br />
                     <ul className="collection">
-                        <Cart />
+                        {this.generateCarts}
                     </ul>
                 </div>
                 <br />
@@ -30,5 +33,16 @@ class CartContainer extends Component {
         );
     }
 }
-
-export default CartContainer;
+const mapStateToProps = (state)=>{
+    return{
+        addedProducts: state.addedProducts,
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        removeItem: (id)=>{dispatch(removeProduct(id))},
+        addQuantity: (id)=>{dispatch(addQuantity(id))},
+        subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)( CartContainer)
