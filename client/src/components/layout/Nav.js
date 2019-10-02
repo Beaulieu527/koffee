@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem, Divider, Dropdown} from 'react-materialize';
-import M from 'materialize-css'
+
 
 class Nav extends Component {
 
@@ -26,7 +26,7 @@ class Nav extends Component {
                             Register
                     </a>
                         <Divider />
-                        <a href="#">
+                        <a href="/">
                             Logout
                     </a>
                     </Dropdown>

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Total from '../components/cart/Total';
 import Cart from '../components/cart/Cart';
-import { removeProduct, addQuantity, subtractQuantity } from '../actions/cartActions';
+
 
 import { connect } from 'react-redux';
 
 class CartContainer extends Component {
-    
+
     generateCarts = () => {
-        return this.props.addedProducts.map((addedProduct) => <Cart product={addedProduct} key={addedProduct.id} />)
+        return this.props.cartProducts.map((cartProduct) => <Cart product={cartProduct} key={cartProduct.id} remove={this.props.removeProduct} add={this.props.addQuantity} subtract={this.props.subtractQuantity} />)
     }
     render() {
         return (
@@ -24,7 +24,7 @@ class CartContainer extends Component {
                     <br />
                     <br />
                     <ul className="collection">
-                        {this.generateCarts}
+                        {this.generateCarts()}
                     </ul>
                 </div>
                 <br />
@@ -33,16 +33,17 @@ class CartContainer extends Component {
         );
     }
 }
-const mapStateToProps = (state)=>{
-    return{
-        addedProducts: state.addedProducts,
+const mapStateToProps = (state) => {
+    return {
+        products: state.products.products,
+        cartProducts: state.cart.cartProducts
     }
 }
-const mapDispatchToProps = (dispatch)=>{
-    return{
-        removeItem: (id)=>{dispatch(removeProduct(id))},
-        addQuantity: (id)=>{dispatch(addQuantity(id))},
-        subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeProduct:(id) => dispatch({ type: "REMOVE_PRODUCT", id }),
+        addQuantity:(id) => dispatch({ type: "ADD_QUANTITY", id }),
+        subtractQuantity:(id) => dispatch({ type: "SUBTRACT_QUANTITY", id })
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)( CartContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer)

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Product from '../components/Product';
 import { connect } from 'react-redux'
-import { addToCart } from '../actions/cartActions';
+//import { addToCart } from '../actions/cartActions';
 
 class ProductsContainer extends Component {
 
 
     generateProducts = () => {
-        return this.props.products.map((product) => <Product product={product} key={product.id} />)
+        return this.props.products.map((product) => <Product handleAdd={this.props.addToCart} product={product} key={product.id} />)
     }
 
     render() {
@@ -18,7 +18,7 @@ class ProductsContainer extends Component {
                 <br />
                 <br />
                 <div className="box">
-                    <div class="row" >
+                    <div className="row" >
                         {this.generateProducts()}
                     </div>
                 </div>
@@ -30,8 +30,14 @@ class ProductsContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         products: state.products.products,
-        addedProducts: state.products.addedProducts
+        cartProducts: state.cart.cartProducts
     }
 }
 
-export default connect(mapStateToProps, { addToCart })(ProductsContainer);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (product) => dispatch({ type: "ADD_TO_CART", product })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

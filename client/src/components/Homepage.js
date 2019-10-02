@@ -7,7 +7,7 @@ class Homepage extends Component {
     render() {
         return (
             <div>
-                <Parallax image={<img src={"./images/pt.jpg"} />} />
+                <Parallax image={<img src={"./images/pt.jpg"} alt={""} />} />
                     <div className="section #DCDCDC">
                         <div className="row container">
                             <h1 style={{
@@ -52,7 +52,7 @@ class Homepage extends Component {
                             </Row>
                         </div>
                     </div>
-                <Parallax image={<img src={"./images/p2.jpg"}/>} />
+                <Parallax image={<img src={"./images/p2.jpg"} alt={""}/>} />
             </div>   
         );
     }
