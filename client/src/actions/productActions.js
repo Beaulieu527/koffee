@@ -6,7 +6,7 @@ export function fetchProducts() {
             .then(response => {
                 return response.json()
             }).then(responseJSON => {
-                dispatch({type: "FETCH_PRODUCTS", payload: responseJSON})
+                dispatch({ type: "FETCH_PRODUCTS", payload: responseJSON })
             })
     };
-  }
+}
