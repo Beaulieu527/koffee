@@ -6,7 +6,7 @@ import Cart from '../components/cart/Cart';
 import { connect } from 'react-redux';
 
 class CartContainer extends Component {
-
+    
     generateCarts = () => {
         return this.props.cartProducts.map((cartProduct) => <Cart product={cartProduct} key={cartProduct.id} remove={this.props.removeProduct} add={this.props.addQuantity} subtract={this.props.subtractQuantity} />)
     }

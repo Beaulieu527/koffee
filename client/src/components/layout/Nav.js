@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem, Divider, Dropdown} from 'react-materialize';
-
+import { Navbar, NavItem, Divider, Dropdown } from 'react-materialize';
+import { Link } from "react-router-dom";
 
 class Nav extends Component {
 
     render() {
         return (
-                <Navbar className='navbar' brand={<a href="/">Koffee</a>} alignLinks="right">
+            <Navbar className='navbar' brand={<Link to="/">Koffee</Link>} alignLinks="right">
 
-                    <NavItem href="/products">
-                        Menu
-                </NavItem>
-                    <NavItem href="/cart">
-                        <i className="material-icons">shopping_cart</i>
-                    </NavItem>
-                    <Dropdown trigger={<a target="_blank" href="/">Customer</a>}>
-                        <a href="/orders">
-                            Orders
-                    </a>
-                        <Divider />
-                        <a href="/login">
-                            Login
-                    </a>
-                        <a href="register">
-                            Register
-                    </a>
-                        <Divider />
-                        <a href="/">
-                            Logout
-                    </a>
-                    </Dropdown>
+                <Link to="/products">
+                    Menu
+                </Link>
+                <Link to="/cart">
+                    <i className="material-icons">shopping_cart</i>
+                </Link>
+                <Dropdown trigger={<a target="_blank" href="/">Customer</a>}>
+                    <Link to="/orders">
+                        Orders
+                    </Link>
+                    <Divider />
+                    <Link to="/login">
+                        Login
+                    </Link>
+                    <Link to="register">
+                        Register
+                    </Link>
+                    <Divider />
+                    <Link to="/">
+                        Logout
+                    </Link>
+                </Dropdown>
 
-                </Navbar>
+            </Navbar >
         );
     }
 }

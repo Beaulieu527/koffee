@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
 import Nav from './components/layout/Nav'
 import { connect } from 'react-redux'
 import Login from './components/user/Login'
@@ -22,13 +23,13 @@ class App extends Component {
     return (
       [
         <header>
-          <Nav />
+         
         </header>,
 
         <main>
-          <BrowserRouter>
+          <Router>
+          <Nav />
             <div className="App">
-
               <Switch>
                 <Route exact path="/" component={Homepage} />
                 <Route path="/products" component={ProductsContainer} />
@@ -38,7 +39,7 @@ class App extends Component {
                 <Route path="/orders" component={OrdersContainer} />
               </Switch>
             </div>
-          </BrowserRouter>
+          </Router>
         </main>,
 
         <Footer />

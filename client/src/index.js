@@ -9,8 +9,6 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import * as serviceWorker from './serviceWorker';
 import M from 'materialize-css'
-import PersistedStore from "./PersistedStore";
-
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
