@@ -46,20 +46,20 @@ const cartReducer = (state = initState, action) => {
     }
     //INSIDE CART COMPONENT
     if (action.type === "ADD_QUANTITY") {
-        let cartProduct = state.products.find(product => product.id === action.id)
-        cartProduct.quantity += 1
-        let newTotal = state.total + cartProduct.price
+        let product = state.cartProducts.find(cartProduct => cartProduct.id === action.id)
+        product.quantity += 1
+        let newTotal = state.total + product.price
         return {
             ...state,
             total: newTotal
         }
     }
     if (action.type === "SUBTRACT_QUANTITY") {
-        let cartProduct = state.products.find(product => product.id === action.id)
+        let product = state.cartProducts.find(cartProduct => cartProduct.id === action.id)
         //if the qt == 0 then it should be removed
-        if (cartProduct.quantity === 1) {
-            let new_products = state.cartProductss.filter(product => product.id !== action.id)
-            let newTotal = state.total - cartProduct.price
+        if (product.quantity === 1) {
+            let new_products = state.cartProducts.filter(cartProduct => cartProduct.id !== action.id)
+            let newTotal = state.total - product.price
             return {
                 ...state,
                 cartProducts: new_products,
@@ -67,8 +67,8 @@ const cartReducer = (state = initState, action) => {
             }
         }
         else {
-            cartProduct.quantity -= 1
-            let newTotal = state.total - cartProduct.price
+            product.quantity -= 1
+            let newTotal = state.total - product.price
             return {
                 ...state,
                 total: newTotal
