@@ -4,6 +4,14 @@ import { Link } from "react-router-dom";
 
 class Nav extends Component {
 
+    handleClick = event => {
+        event.preventDefault()
+        // Remove the token from localStorage
+        localStorage.removeItem("token")
+        // Remove the user object from the Redux store
+        this.props.logout()
+      }
+      
     render() {
         return (
             <Navbar className='navbar' brand={<Link to="/">Koffee</Link>} alignLinks="right">
@@ -26,7 +34,7 @@ class Nav extends Component {
                         Register
                     </Link>
                     <Divider />
-                    <Link to="/">
+                    <Link to="/" onClick={() => { this.handleClick() }}>
                         Logout
                     </Link>
                 </Dropdown>

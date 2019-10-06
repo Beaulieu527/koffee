@@ -12,13 +12,15 @@ import ProductsContainer from './containers/ProductsContainer'
 import Footer from './components/layout/Footer';
 import CartContainer from './containers/CartContainer';
 import { fetchProducts } from './actions/productActions';
-
+import { getOrdersFetch, logoutUser } from './actions/usersActions';
 
 class App extends Component {
 
   componentDidMount() {
     this.props.fetchProducts()
+    this.props.getOrdersFetch()
   }
+
   render() {
     return (
       [
@@ -28,7 +30,7 @@ class App extends Component {
 
         <main>
           <Router>
-          <Nav />
+          <Nav logout={this.props.logoutUser} />
             <div className="App">
               <Switch>
                 <Route exact path="/" component={Homepage} />
@@ -52,6 +54,17 @@ class App extends Component {
   }
 }
 
-let mapStateToProps = (state) => { return { products: state.products } }
-export default connect(mapStateToProps, { fetchProducts })(App)
+
+const mapStateToProps = state => ({
+  products: state.products, 
+  currentUser: state.currentUser
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchProducts: () => dispatch(fetchProducts()),
+  getOrdersFetch: () => dispatch(getOrdersFetch()),
+  logoutUser: () => dispatch(logoutUser())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 

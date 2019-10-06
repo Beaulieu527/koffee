@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, TextInput } from 'react-materialize';
+import { connect } from 'react-redux';
 import { userPostFetch } from '../../actions/usersActions';
+
 
 class Signup extends Component {
     constructor(props) {
@@ -9,8 +11,9 @@ class Signup extends Component {
             name: '',
             email: '',
             password: '',
+            password_confirmation:'',
             address: '',
-            phoneNumber: ''
+            phone_number: ''
         };
     }
 
@@ -26,7 +29,7 @@ class Signup extends Component {
 
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 <h2 style={{ textAlign: 'center' }}>Register</h2>
                 <ul className="collection"></ul>
                 <br />
@@ -38,10 +41,12 @@ class Signup extends Component {
                     <br />
                     <TextInput id="password" password label="Password" onChange={event => this.handleOnChange(event)} />
                     <br />
+                    <TextInput id="password_confirmation" password label="Password Confirmation" onChange={event => this.handleOnChange(event)} />
+                    <br />
                     <TextInput id="address" label="Address" onChange={event => this.handleOnChange(event)} />
                     <br />
-                    <TextInput id="phoneNumber" label="Phone Number" onChange={event => this.handleOnChange(event)} />
-                    <Button waves="teal" style={{ marginRight: '5px' }}>
+                    <TextInput id="phone_number" label="Phone Number" onChange={event => this.handleOnChange(event)} />
+                    <Button waves="teal" type="submit" style={{ marginRight: '5px' }}>
                         Register
                     </Button>
                 </form>

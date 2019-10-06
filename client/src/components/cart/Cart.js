@@ -24,7 +24,7 @@ class Cart extends Component {
                     <div className="item-desc">
                         <span className="title">{this.props.product.title}</span>
                         <p>{this.props.description}</p>
-                        <p><b>Price: {this.props.product.price}$</b></p>
+                        <p><b>Price: ${this.props.product.price}</b></p>
                         <p>
                             <b>Quantity: {this.props.product.quantity}</b>
                         </p>
