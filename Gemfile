@@ -28,8 +28,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
  gem 'rack-cors'
 
- gem 'devise'
-gem 'devise-jwt', '~> 0.5.8'
+# gem 'devise'
+gem 'devise-jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

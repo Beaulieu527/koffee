@@ -12,7 +12,9 @@ import ProductsContainer from './containers/ProductsContainer'
 import Footer from './components/layout/Footer';
 import CartContainer from './containers/CartContainer';
 import { fetchProducts } from './actions/productActions';
-import { getOrdersFetch, logoutUser } from './actions/usersActions';
+import { logoutUser, getOrdersFetch } from './actions/usersActions';
+
+
 
 class App extends Component {
 

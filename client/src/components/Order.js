@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
-import OrderLine from './user/OrderLine';
+import Product from "./Product"
+import { connect } from 'react-redux';
 
 class Order extends Component {
-    
+
+    generateProducts = () => {
+        return this.props.order.products.map((product) => <Product handleAdd={this.props.addToCart} product={product} />)
+    }
     render() {
         return (
             <div>
-            <div class="row">
-               <div class="col s12 m4">
-                   <div class="card-panel">
-                       <table class="responsive-table">
-                           <thead>
-                           <tr>
-                               <th>Item Name</th>
-                               <th>Quantiy</th>
-                               <th>Price</th>
-                           </tr>
-                           </thead>
+                <div className="row">
+                    <div className="col s12 m12">
+                        <div className="card-panel">
+                            <table className="responsive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order {this.props.index}</th>
+                                        <th>Total ${this.props.order.amount}</th>
+                                    </tr>
+                                </thead>
 
-                           <tbody>
-                               <OrderLine/>
-                           </tbody>
-                       </table>
-                   </div>
-               </div>
-           </div>
-       </div>
+                                <tbody>
+                                    {this.generateProducts()}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (product) => dispatch({ type: "ADD_TO_CART", product })
+    }
+}
 
-export default Order;
+export default connect(null,mapDispatchToProps) (Order);

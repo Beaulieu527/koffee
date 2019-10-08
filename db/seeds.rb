@@ -5,29 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-    users = User.create([
-        {
-            "email": "justin@b.com" ,
-            "password": "secret" ,
-            "name": "Justin" ,
-            "address": "123 Breva Lane Monson Ma." ,
-            "phone_number": "1-413-234-4444" 
-        },
-        {
-            "email": "mike@b.com" ,
-            "password": "secret" ,
-            "name": "Mike" ,
-            "address": "12 Cha Lane Mon Ma." ,
-            "phone_number": "1-413-444-4444" 
-        },
-        {
-            "email": "joe@b.com" ,
-            "password": "secret" ,
-            "name": "Joe" ,
-            "address": "13 Awake Street Monson Ma.",
-            "phone_number": "1-413-444-3544" 
-        }
-    ])
      products = Product.create([{
             "name": "Affogato",
             "description": "This is a term that literally means 'drowned'. It is the description of a shot of separately served espresso that is later poured over a the top of a scoop of vanilla ice cream or gelato. This beverage is usually served in a short drink glass and is a Italian desert favourite. Popular Affogatos include Vanilla Affogato, Mocha Affogato, and Peppermint Affogato.",

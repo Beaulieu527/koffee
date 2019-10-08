@@ -6,7 +6,10 @@ export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 })
 
-
+export const fetchOrders = (orders) => ({
+  type: 'FETCH_ORDERS',
+  payload: orders
+})
 
 export const userPostFetch = user => {
   return dispatch => {
@@ -27,8 +30,6 @@ export const userPostFetch = user => {
       })
   }
 }
-
-
 
 export const userLoginFetch = user => {
   return dispatch => {
@@ -54,18 +55,33 @@ export const getOrdersFetch = () => {
   return dispatch => {
     const token = localStorage.token;
     if (token) {
-      return fetch("http://localhost:3000/Orders", {
+      return fetch("http://localhost:3000/orders", {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
-          Accept: 'application/json',
           'Authorization': `Bearer ${token}`
-        }
+        },
       })
         .then(resp => resp.json())
         .then(data => {
-            dispatch(loginUser(data.user))
+            dispatch(fetchOrders(data))
         })
     }
   }
+}
+
+export const placeOrdersFetch = (products) => {
+    const token = localStorage.token;
+    if (token) {
+      return fetch("http://localhost:3000/orders", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({products})
+      })
+        .then(resp => resp.json())
+        .then( () => getOrdersFetch())
+    }
 }

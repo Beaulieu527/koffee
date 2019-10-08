@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Order from '../components/Order';
+import { connect } from 'react-redux';
 
 class OrdersContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  };
+        
+    generateOrders = () => {
+        console.log(this.props.orders)
+        return this.props.orders.map((order, index) => <Order index={index + 1} order={order} key={order.id} />)
     }
     render() {
         return (
@@ -14,11 +16,16 @@ class OrdersContainer extends Component {
                 <br/>
                 <br/>
                 <div className="box">
-                    <Order/>
+                    {this.generateOrders()}
                 </div>
             </div>
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        orders: state.user.orders
+    }
+}
 
-export default OrdersContainer;
+export default connect(mapStateToProps)(OrdersContainer);
