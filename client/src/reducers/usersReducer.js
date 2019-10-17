@@ -10,7 +10,9 @@ const usersReducer = (state = initialState, action) => {
         case 'LOGOUT_USER':
             return { ...state, currentUser: {} }
         case 'FETCH_ORDERS':
-            return {...state, orders: action.payload}
+            return { ...state, orders: action.payload }
+        case "ADD_ORDER":
+            return {...state, orders: [...state.orders, action.payload]}
         default:
             return state;
 

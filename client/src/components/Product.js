@@ -5,9 +5,7 @@ import React, { Component } from 'react';
 class Product extends Component {
 
     handleClick = () => {
-
         this.props.handleAdd(this.props.product);
-        
     }
 
     render() {
@@ -21,6 +19,7 @@ class Product extends Component {
                     <button className="btn-floating halfway-fab waves-effect waves-light red" onClick={() => this.handleClick()}><i className="material-icons">add</i></button>
                         <span className="card-title activator grey-text text-darken-4">{this.props.product.name}<i className="material-icons right">more_vert</i></span>
                         <h6>${this.props.product.price} </h6>
+                    
                     </div>
                     <div className="card-reveal">
                         <span className="card-title grey-text text-darken-4">{this.props.product.name}<i className="material-icons right">close</i></span>

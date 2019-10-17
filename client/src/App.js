@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Nav from './components/layout/Nav'
 import { connect } from 'react-redux'
@@ -11,28 +11,22 @@ import OrdersContainer from './containers/OrdersContainer'
 import ProductsContainer from './containers/ProductsContainer'
 import Footer from './components/layout/Footer';
 import CartContainer from './containers/CartContainer';
-import { fetchProducts } from './actions/productActions';
-import { logoutUser, getOrdersFetch } from './actions/usersActions';
+import { logoutUser } from './actions/usersActions';
 
 
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.fetchProducts()
-    this.props.getOrdersFetch()
-  }
-
   render() {
     return (
       [
         <header>
-         
+
         </header>,
 
         <main>
           <Router>
-          <Nav logout={this.props.logoutUser} />
+            <Nav logout={this.props.logoutUser} />
             <div className="App">
               <Switch>
                 <Route exact path="/" component={Homepage} />
@@ -58,13 +52,12 @@ class App extends Component {
 
 
 const mapStateToProps = state => ({
-  products: state.products, 
+  products: state.products,
   currentUser: state.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchProducts: () => dispatch(fetchProducts()),
-  getOrdersFetch: () => dispatch(getOrdersFetch()),
+
   logoutUser: () => dispatch(logoutUser())
 })
 

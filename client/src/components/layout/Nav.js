@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class Nav extends Component {
 
     handleClick = event => {
-        event.preventDefault()
+        // event.preventDefault()
         // Remove the token from localStorage
         localStorage.removeItem("token")
         // Remove the user object from the Redux store
@@ -34,7 +34,7 @@ class Nav extends Component {
                         Register
                     </Link>
                     <Divider />
-                    <Link to="/" onClick={() => { this.handleClick() }}>
+                    <Link to="/" onClick={(event) => { this.handleClick(event) }}>
                         Logout
                     </Link>
                 </Dropdown>

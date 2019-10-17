@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import Order from '../components/Order';
 import { connect } from 'react-redux';
+import { getOrdersFetch } from '../actions/usersActions';
+
 
 class OrdersContainer extends Component {
-        
+
+    componentDidMount(){
+        console.log("COMPONENT DID MOUNT")
+        this.props.getOrdersFetch()
+    }
+    
     generateOrders = () => {
         console.log(this.props.orders)
         return this.props.orders.map((order, index) => <Order index={index + 1} order={order} key={order.id} />)
@@ -27,5 +34,10 @@ const mapStateToProps = (state) => {
         orders: state.user.orders
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getOrdersFetch: () => dispatch(getOrdersFetch())
+    }
+}
 
-export default connect(mapStateToProps)(OrdersContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(OrdersContainer);

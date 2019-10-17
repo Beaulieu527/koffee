@@ -20,13 +20,14 @@ export const userPostFetch = user => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({user})
+      body: JSON.stringify({ user })
     })
       .then(resp => {
-        return resp.json()})
+        return resp.json()
+      })
       .then(data => {
-          localStorage.setItem("token", data.token)
-          dispatch(loginUser(data.user))
+        localStorage.setItem("token", data.token)
+        dispatch(loginUser(data.user))
       })
   }
 }
@@ -40,13 +41,14 @@ export const userLoginFetch = user => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({user})
+      body: JSON.stringify({ user })
     })
       .then(resp => {
-        return resp.json()})
+        return resp.json()
+      })
       .then(data => {
-          localStorage.setItem("token", data.token)
-          dispatch(loginUser(data.user))
+        localStorage.setItem("token", data.token)
+        dispatch(loginUser(data.user))
       })
   }
 }
@@ -64,13 +66,14 @@ export const getOrdersFetch = () => {
       })
         .then(resp => resp.json())
         .then(data => {
-            dispatch(fetchOrders(data))
+          dispatch(fetchOrders(data))
         })
     }
   }
 }
 
 export const placeOrdersFetch = (products) => {
+  return dispatch => {
     const token = localStorage.token;
     if (token) {
       return fetch("http://localhost:3000/orders", {
@@ -79,9 +82,10 @@ export const placeOrdersFetch = (products) => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({products})
+        body: JSON.stringify({ products })
       })
         .then(resp => resp.json())
-        .then( () => getOrdersFetch())
+        .then((data) => dispatch({ type: "ADD_ORDER", payload: data }))
     }
+  }
 }

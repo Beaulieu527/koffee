@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Parallax,Row,Col } from 'react-materialize';
+import { Parallax, Row, Col} from 'react-materialize';
 
 
 class Homepage extends Component {

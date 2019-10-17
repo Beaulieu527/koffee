@@ -12,10 +12,10 @@ import { placeOrdersFetch } from '../actions/usersActions';
 class CartContainer extends Component {
 
     handleClick = () => {
-       placeOrdersFetch(this.props.cartProducts)
+       this.props.placeOrder(this.props.cartProducts)
         // this.props.placeOrder(this.props.cartProducts)
         console.log(this.props.cartProducts)
-        // this.props.history.push('/orders')
+        this.props.history.push('/orders')
     }
 
     generateCarts = () => {
@@ -51,13 +51,13 @@ const mapStateToProps = (state) => {
     return {
         products: state.products.products,
         cartProducts: state.cart.cartProducts,
-        total: state.cart.total
+        total: state.cart.total                             
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        placeOrder: (orders) => placeOrdersFetch(orders),
+        placeOrder: (orders) => dispatch(placeOrdersFetch(orders)),
         removeProduct: (id) => dispatch({ type: "REMOVE_PRODUCT", id }),
         addQuantity: (id) => dispatch({ type: "ADD_QUANTITY", id }),
         subtractQuantity: (id) => dispatch({ type: "SUBTRACT_QUANTITY", id })

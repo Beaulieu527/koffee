@@ -18,12 +18,11 @@ class Cart extends Component {
             <div>
                 <li className="collection-item avatar" key={this.props.product.id}>
                     <div className="item-img">
-                        <img img src="images/c.jpeg" alt="image"/>
+                        <img img src="images/c.jpeg" alt=""/>
                     </div>
 
                     <div className="item-desc">
-                        <span className="title">{this.props.product.title}</span>
-                        <p>{this.props.description}</p>
+                        <span className="title"><strong>{this.props.product.name}</strong></span>
                         <p><b>Price: ${this.props.product.price}</b></p>
                         <p>
                             <b>Quantity: {this.props.product.quantity}</b>
